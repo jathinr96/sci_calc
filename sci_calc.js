@@ -1,5 +1,6 @@
 var dotcheck = opcheck=para=0;
 var first=second=M="";
+var pi=Math.PI;
 
 function dot(){
     if(dotcheck==""){
@@ -67,7 +68,59 @@ function c(){
 
 function maths(o){
     first = equal();
-    if(o=="+"){
-        
+    if (o == "sqr") {
+        first = first * first;
+    } else if (o == "cube") {
+        result = firstI * firstI * firstI;
+    } else if (o == "Sqrt") {
+        result = Math.sqrt(firstI);
+    } else if (o == "cubert") {
+        result = Math.cbrt(firstI);
+    } else if (o == "negpos") {
+        result = firstI * -1;
+    } else if (o == "sine") {
+        result = Math.sin(firstI);
+    } else if (o == "cosine") {
+        result = Math.cos(firstI);
+    } else if (o == "tangent") {
+        result = Math.tan(firstI);
+    } else if (o == "ln") {
+        result = Math.log(firstI);
+    } else if (o == "logTen") {
+        result = Math.log10(firstI);
+    } else if (o == "rand") {
+        result = Math.round(firstI);
+    }else if (o == "res") {
+        result = 1 / firstI;
+    } else if (o == "fact") {
+        n = firstI;
+        firstI = 1;
+        while (n > 1){
+            firstI *= n;
+            n -= 1;
+        }
+        result = firstI;
     }
+    return first;
+}
+
+function PI(){
+    if(dotcheck==''){
+        first+=pi;
+        dotcheck='.';
+    }
+}
+
+function base(n){
+    var first2=0;
+    first2=eval(first);
+    if(n=='bin'){
+        first2 = first2.toString(2);
+    }
+    else if(n=='oct'){
+        first2 = first2.toString(8);
+    }else if(n=='hex'){
+        first2 = first2.toString(16);
+    }
+    return first2;
 }
