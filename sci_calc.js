@@ -1,4 +1,4 @@
-var dotcheck = opcheck=para=0;
+var dotcheck = opcheck=para=sign=0;
 var first=second=M="";
 var pi=Math.PI;
 
@@ -27,7 +27,7 @@ function operators(n){
         opcheck=1;
         first+=n;
     }
-    
+    sign++;
     dotcheck = "";
     return first;
 }
@@ -49,6 +49,7 @@ function equal(){
     else if(para>1){
         return "Math error";
     }
+    sign=0;
     return eval(first);
 }
 
@@ -71,36 +72,36 @@ function maths(o){
     if (o == "sqr") {
         first = first * first;
     } else if (o == "cube") {
-        result = firstI * firstI * firstI;
+        first = first * first * first;
     } else if (o == "Sqrt") {
-        result = Math.sqrt(firstI);
+        first = Math.sqrt(first);
     } else if (o == "cubert") {
-        result = Math.cbrt(firstI);
+        first = Math.cbrt(first);
     } else if (o == "negpos") {
-        result = firstI * -1;
+        first = first * -1;
     } else if (o == "sine") {
-        result = Math.sin(firstI);
+        first = Math.sin(first);
     } else if (o == "cosine") {
-        result = Math.cos(firstI);
+        first = Math.cos(first);
     } else if (o == "tangent") {
-        result = Math.tan(firstI);
+        first = Math.tan(first);
     } else if (o == "ln") {
-        result = Math.log(firstI);
+        first = Math.log(first);
     } else if (o == "logTen") {
-        result = Math.log10(firstI);
+        first = Math.log10(first);
     } else if (o == "rand") {
-        result = Math.round(firstI);
+        first = Math.round(first);
     }else if (o == "res") {
-        result = 1 / firstI;
+        first = 1 / first;
     } else if (o == "fact") {
-        n = firstI;
-        firstI = 1;
+        n = first;
+        first = 1;
         while (n > 1){
-            firstI *= n;
+            first *= n;
             n -= 1;
         }
-        result = firstI;
     }
+    dotcheck = (Math.round(first) == first) ? "": ".";
     return first;
 }
 
@@ -109,6 +110,7 @@ function PI(){
         first+=pi;
         dotcheck='.';
     }
+    return first;
 }
 
 function base(n){
@@ -123,4 +125,18 @@ function base(n){
         first2 = first2.toString(16);
     }
     return first2;
+}
+function power(n){
+   first =equal();
+   return 'pow('+first+',';
+}
+function roots(n){
+    first =equal();
+   return 'root('+first+',';
+}
+function pow(a,b) {
+     return Math.pow(a, b);
+}
+function root(a,b) {
+     return Math.pow(a, 1 / b).toPrecision(12);
 }
