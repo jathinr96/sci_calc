@@ -2,6 +2,8 @@ var dotcheck = opcheck=para=sign=0;
 var first=second=M="";
 var pi=Math.PI;
 
+function math_error(){}
+function E(){}
 function dot(){
     if(dotcheck==""){
         first+='.';
@@ -9,7 +11,10 @@ function dot(){
     }
     return first;
 }
-
+function percent(){
+    first=equal();
+    return first/100;
+}
 function digit(n){
     opcheck=0;
     first+=n;
@@ -41,7 +46,13 @@ function mr() {
     first = M;
     return first ;
 }
-
+function mod(){
+    first=equal();
+    return 'm('+first+',';
+}
+function m(a,b){
+    return a%b;
+}
 function equal(){
     if(para==1){
         first+=')';
@@ -49,8 +60,16 @@ function equal(){
     else if(para>1){
         return "Math error";
     }
+    if(sign!=0&&!(first.charAt(first.length-1)>=0&&first.charAt(first.length-1)<=9)){
+        dlt();
+    }
     sign=0;
-    return eval(first);
+    first = eval(first);
+    
+    if(isNaN(first)||first==undefined){
+        return "Math error";
+    }
+    return first;
 }
 
 function dlt(){
@@ -100,6 +119,9 @@ function maths(o){
             first *= n;
             n -= 1;
         }
+    }
+    if(isNaN(first)||first==undefined){
+        return "Math error";
     }
     dotcheck = (Math.round(first) == first) ? "": ".";
     return first;
